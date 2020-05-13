@@ -99,6 +99,30 @@ a {
     text-align: center;
   }
 }
+
+.fade_off {
+  opacity: 0;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+  -ms-transition: all 1s;
+  transition: all 1s;
+}
+
+.fade_on {
+  opacity: 1;
+}
+
+#features,
+#price,
+#contact {
+  margin-top: -100px;
+  padding-top: 100px;
+}
+
+#contact {
+  margin-top: 0;
+}
 /* header
 --------------------*/
 
@@ -285,6 +309,7 @@ a {
       border-right: 1px solid #E5E5E5;
       padding: 40px 30px 47px 19px;
       width: 35%;
+      white-space: nowrap;
     }
 
     td {
@@ -319,24 +344,72 @@ a {
   &-item {
     font-size: 1.4rem;
     line-height: 1.85;
-  }
 
+    &.add-active {
+      .faq-question::after {
+        transform: translateY(-50%) rotate(0);
+      }
+    }
+
+    &:first-child {
+      .faq-question::after {
+        top: 50.5%;
+        transform: translateY(-50%) rotate(0);
+      }
+
+      &.add-active {
+        .faq-question::after {
+          transform: translateY(-50%) rotate(90deg);
+        }
+      }
+    }
+  }
+  
   &-question {
     align-items: center;
     border: 1px solid #E5E5E5;
     display: flex;
     height: 58px;
     justify-content: center;
+    position: relative;
+
+    &::after,
+    &::before {
+      background: #05A5FA;
+      content: '';
+      display: block;
+      height: 3px;
+      top: 50%;
+      position: absolute;
+      right: 20px;
+      transform: translateY(-50%);
+      transition: transform .3s;
+      width: 15px;
+    }
+
+    &::after {
+      top: 49%;
+      transform: rotate(90deg);
+    }
+
+    
   }
 
   &-answer {
     align-items: center;
     background-color: #F2F2F2;
     border: 1px solid #E5E5E5;
-    display: flex;
+    display: none;
     height: 93px;
     justify-content: center;
+    padding-top: 18px;
+    text-align: center;
   }
+  
+}
+
+.open {
+  display: block;
 }
 
 /* blog
@@ -440,7 +513,7 @@ a {
 
 .contact {
   background: transparent linear-gradient(90deg, #05A5FA 0%, #63FBD7 100%, #67FFD6 100%);
-  padding: 71px 0;
+  padding: 71px 0 71px;
   text-align: center;
 
   .util-ttl,
