@@ -1,4 +1,21 @@
 @charset "UTF-8";
+
+$layout-width-inner: 1022px;
+
+// ブレークポイント
+$breakpoints: (
+  "sp": "screen and (max-width: 767px)",
+  "tab": "screen and (max-width: #{$layout-width-inner - 1px})",
+  "pc": "screen and (min-width: #{$layout-width-inner})",
+);
+
+@mixin mq($breakpoint: sp) {
+
+  @media #{map-get($breakpoints, $breakpoint)} {
+
+    @content;
+  }
+}
 /* リセットCSS
 ===================================== */
 html, body, div, span, applet, object, iframe,
@@ -74,7 +91,7 @@ html {
 
 body {
   color: #333;
-  font-family: "ヒラギノ角ゴ ProN W6", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "Droid Sans", sans-serif;
+  font-family: 'Noto Sans JP', "メイリオ", Meiryo, "Droid Sans", sans-serif;
 }
 
 a {
@@ -97,6 +114,39 @@ a {
     font-size: 1.6rem;
     margin-top: 20px;
     text-align: center;
+  }
+}
+
+.add-active {
+
+  .header-nav {
+    right: 0;
+  }
+  
+  .header-burger_inline{
+    &:nth-child(1) {
+      background-color: #fff;
+      left: -300px;
+      top: 10px;
+      transform: rotate(-45deg);
+    }
+
+    &:nth-child(2) {
+      left: 100%;
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      background-color: #fff;
+      left: -300px;
+      top: 10px;
+      transform: rotate(45deg);
+    }
+  }
+
+  .header-overlay {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -143,11 +193,21 @@ a {
     margin: 0 auto;
     max-width: 1022px;
     padding: 0 20px;
+    position: relative;
     width: 100%;
   }
 
   &-ttl {
     font-size: 2.4rem;
+  }
+
+  &-burger {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
   }
 
   &-list {
@@ -164,6 +224,18 @@ a {
 
   &-item + &-item {
     margin-left: 46px;
+  }
+
+  &-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    -webkit-transition: .3s;
+    transition: .3s;
+    visibility: hidden;
+    width: 100%;
   }
 }
 
@@ -192,12 +264,12 @@ a {
   }
 
   &-content {
-    width: 351px;
+    max-width: 351px;
+    width: 100%;
   }
 
   &-ttl {
     font-size: 3.2rem;
-    font-weight: bold;
     line-height: 1.6875;
     margin-top: 30px;
   }
@@ -214,8 +286,11 @@ a {
   }
 
   &-img {
-    width: 518px;
-    height: 430px;
+    img {
+      height: 430px;
+      max-width: 518px;
+      width: 100%;
+    }
   }
 }
 
@@ -256,7 +331,8 @@ a {
   }
 
   &-content {
-    width: 502px;
+    max-width: 502px;
+    width: 100%;
 
     &_ttl {
       font-size: 2.4rem;
@@ -308,12 +384,13 @@ a {
     th {
       border-right: 1px solid #E5E5E5;
       padding: 40px 30px 47px 19px;
-      width: 35%;
       white-space: nowrap;
+      width: 35%;
     }
 
     td {
       padding: 40px 0 47px 30px;
+      white-space: nowrap;
       width: 65%;
     }
   }
@@ -400,9 +477,8 @@ a {
     background-color: #F2F2F2;
     border: 1px solid #E5E5E5;
     display: none;
-    height: 93px;
     justify-content: center;
-    padding-top: 18px;
+    padding: 18px;
     text-align: center;
   }
   
@@ -490,7 +566,7 @@ a {
   }
 
   &-content {
-    padding: 24px 18px 34px;
+    padding: 24px 17px 34px;
   }
 
   &-ttl {
@@ -569,7 +645,8 @@ a {
       border-radius: 3px;
       height: 43px;
       margin-top: 43px;
-      width: 499px;
+      max-width: 499px;
+      width: 100%;
     }
   }
 
@@ -580,8 +657,9 @@ a {
       border-radius: 3px;
       height: 179px;
       margin-top: 43px;
+      max-width: 783px;
       resize: none;
-      width: 783px;
+      width: 100%;
     }
   }
 
@@ -597,4 +675,256 @@ a {
 
 .copyright {
   font-size: 1.4rem;
+}
+
+/* sp画面
+--------------------------------*/
+
+@include mq('sp') {
+
+  .util-ttl {
+    font-size: 2.4rem;
+  }
+  /*  sp header */
+  .header {
+
+    &-ttl {
+      font-size: 2rem;
+      margin-left: 20px;
+    }
+
+    &-inner {
+      justify-content: start;
+      position: relative;
+    }
+
+    &-burger {
+      display: block;
+      height: 26px;
+      right: 20px;
+      position: absolute;
+      top: 38%;
+      transition: right .3s linear;
+      width: 26px;
+
+      &_inline {
+        background-color: #3e3e3e;
+        border-radius: 4px;
+        display: block;
+        height: 4px;
+        left: 0;
+        position: absolute;
+        -webkit-transition: .4s;
+        transition: .4s;
+        width: 26px;
+        z-index: 1;
+
+        &:nth-child(1) {
+          top: 2px;
+        }
+
+        &:nth-child(2) {
+          top: 10px;
+        }
+
+        &:nth-child(3) {
+          top: 18px;
+        }
+    }
+    }
+
+    &-nav {
+      align-items: center;
+      background: #fff;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      position: fixed;
+      right: -300px;
+      top: 0;
+      transition: right .3s linear;
+      width: 300px;
+      z-index: 1;
+    }
+
+    &-list {
+      display: block;
+      text-align: center;
+    }
+
+    &-item + &-item {
+      margin: 50px 0 0;
+    }
+
+    .contact-btn {
+      display: none;
+    }
+  }
+
+  /* sp main */
+  .main {
+
+    background-position: top -150px right -60px;
+    &-inner {
+      justify-content: center;
+      padding: 50px 30px 180px;
+    }
+
+    &-content {
+      color: #EEFBFB;
+    }
+
+    &-ttl {
+      font-size: 2.8rem;
+    }
+
+    &-txt {
+      font-size: 1.4rem;
+    }
+
+    &-img {
+      display: none;
+    }
+  }
+
+  /* sp features */
+
+  .features {
+
+    &-inner {
+      width: 80%;
+      margin: 67px auto 0;
+    }
+    
+    &-ttl {
+      font-size: 2.3rem;
+    }
+
+    &-item {
+      &_ttl {
+        font-size: 2rem;
+      }
+
+      &_inner {
+        display: block;
+      }
+    }
+
+    &-img {
+      display: flex;
+      justify-content: center;
+
+      img {
+        height: 70%;
+        width: 80%;
+      }
+    }
+
+    &-content {
+      &_ttl {
+        font-size: 1.6rem;
+        margin-top: 20px;
+      }
+    }
+
+    &-txt {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* sp price */
+  .price {
+    &-inner {
+      width: 90%;
+    }
+    
+    .txt-br{
+      display: block;
+
+      &::before {
+        content: '\A';
+        white-space: pre;
+      }
+    }
+    
+    table {
+      th {
+        font-size: 1.4rem;
+        padding: 0 10px;
+        text-align: center;
+      }
+
+      td {
+        font-size: 1.4rem;
+        padding-left: 15px;
+      }
+    }
+
+    &-txt {
+      font-size: 1.4rem;
+    }
+  }
+
+  /* sp faq */
+
+  .faq {
+    &-inner {
+      padding: 0 20px;
+    }
+
+    &-question {
+      padding: 0 25px 0 16px;
+      text-align: center;
+      &::after,
+      &::before {
+        height: 2px;
+        right: 10px;
+        width: 10px;
+      }
+    }
+
+    &-question_txt {
+      font-size: 1rem;
+    }
+
+    &-answer_txt {
+      font-size: 1rem;
+    }
+  }
+
+  /* sp blog */
+  .blog {
+    &-inner {
+      display: block;
+    }
+
+    &-item + &-item {
+      width: 80%;
+      margin: 30px auto 0;
+    }
+
+    &-item {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+
+  /* sp works */
+  .works {
+
+    &-item {
+      margin-left: 25px;
+    }
+
+    &-item + &-item {
+      margin-left: 0;
+    }
+  }
+
+  /* contact */
+  .contact {
+    &-inner {
+      padding: 43px 30px;
+    }
+  }
 }

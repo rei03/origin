@@ -5,15 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>portfolio_01</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,500,900&amp;subset=japanese" rel="stylesheet">
     <link rel="stylesheet" href="sass/swiper.min.css">
     <link rel="stylesheet" href="sass/style.css">
 </head>
 
 <body>
-    <header class="header">
+    <header id="js-header" class="header">
         <div class="header-inner">
             <a href="#" class="header-logo"><img src="img/logo.png" alt=""></a>
             <h1 class="header-ttl">ユアコーディング</h1>
+            <button id="js-toggle" class="header-burger">
+                <span class="header-burger_inline"></span>
+                <span class="header-burger_inline"></span>
+                <span class="header-burger_inline"></span>
+              </button>
             <nav class="header-nav">
                 <ul class="header-list">
                     <li class="header-item"><a href="#features">特徴</a></li>
@@ -23,13 +29,14 @@
             </nav>
             <a href="#contact" class="contact-btn">お問い合わせ</a>
         </div>
+        <div id="js-overlay" class="header-overlay"></div>
     </header>
     <main>
         <div class="main">
             <div class="inner main-inner">
                 <div class="main-content">
-                    <h2 class="main-ttl">コーディングの手間を 最小に、デザインに注力 する助けに</h2>
-                    <p class="main-txt">ユアコーディングはコーディングに<br> 特化したフリーランス<br> デザインに注力されたい方の<br> 助けになります</p>
+                    <h2 class="main-ttl">コーディングの手間を最小に、デザインに注力する助けに</h2>
+                    <p class="main-txt">ユアコーディングはコーディングに特化したフリーランスデザインに注力されたい方の助けになります</p>
                     <a href="#contact" class="contact-btn main-btn">お問い合わせ</a>
                 </div>
                 <div class="main-img">
@@ -47,8 +54,8 @@
                         <div class="features-item_inner">
                             <div class="features-img"><img src="img/feature01.png" alt=""></div>
                             <div class="features-content">
-                                <h4 class="features-content_ttl">コーディングに特化したフリーランスのため、 スピード感を持った開発が可能。</h4>
-                                <p class="features-txt">開発は常にスピードとの勝負です。<br> ユアコーディングはコーディングに特化しているため、
+                                <h4 class="features-content_ttl">コーディングに特化したフリーランスのため、スピード感を持った開発が可能。</h4>
+                                <p class="features-txt">開発は常にスピードとの勝負です。ユアコーディングはコーディングに特化しているため、
                                     素早く納品することで、クライアントがデザインに注力 する助けとなります。</p>
                             </div>
                         </div>
@@ -58,8 +65,8 @@
                         <div class="features-item_inner row-rev">
                             <div class="features-img"><img src="img/feature02.png" alt=""></div>
                             <div class="features-content">
-                                <h4 class="features-content_ttl">正しいマークアップで、<br> 内部SEOに強いコーディングを<br> デフォルトで行います。</h4>
-                                <p class="features-txt">ユアコーディングでは、「予測しやすい」「再利用しやすい」<br> 「保守しやすい」「拡張しやすい」と言った設計をもとに<br>
+                                <h4 class="features-content_ttl">正しいマークアップで、内部SEOに強いコーディングをデフォルトで行います。</h4>
+                                <p class="features-txt">ユアコーディングでは、「予測しやすい」「再利用しやすい」「保守しやすい」「拡張しやすい」と言った設計をもとに
                                     きちんとコーディングを行うため、納品後も安心です。</p>
                             </div>
                         </div>
@@ -69,9 +76,9 @@
                         <div class="features-item_inner">
                             <div class="features-img"><img src="img/feature03.png" alt=""></div>
                             <div class="features-content">
-                                <h4 class="features-content_ttl">原則いただいたメッセージは、<br> 業務時間内であれば6時間以内に<br> お返しいたします。</h4>
-                                <p class="features-txt">連絡を返さないフリーランスが多い中、<br> ユアコーディングでは定期的な進捗報告など、<br>
-                                    社会人としての基本を踏まえて仕事を行なって<br> おります。</p>
+                                <h4 class="features-content_ttl">原則いただいたメッセージは、業務時間内であれば6時間以内にお返しいたします。</h4>
+                                <p class="features-txt">連絡を返さないフリーランスが多い中、ユアコーディングでは定期的な進捗報告など、
+                                    社会人としての基本を踏まえて仕事を行なっております。</p>
                             </div>
                         </div>
                     </li>
@@ -84,19 +91,19 @@
             <div class="price-inner fade_off">
                 <table>
                     <tr>
-                        <th>HTMLコーディングトップページ</th>
+                        <th>HTML<span class="txt-br">コーディングトップページ</span></th>
                         <td>30.000円〜</td>
                     </tr>
                     <tr>
-                        <th>HTMLコーディング下層1ページ</th>
+                        <th>HTML<span class="txt-br">コーディング下層1ページ</span></th>
                         <td>10.000円〜</td>
                     </tr>
                     <tr>
-                        <th>HTML+WordPressトップページ</th>
+                        <th>HTML+WordPress<span class="txt-br">トップページ</span></th>
                         <td>55.000円〜</td>
                     </tr>
                     <tr>
-                        <th>HTML+WordPress下層1ページ</th>
+                        <th>HTML+WordPress<span class="txt-br">下層1ページ</span></th>
                         <td>15.000円〜</td>
                     </tr>
                 </table>
@@ -113,7 +120,7 @@
                             <p class="faq-question_txt">デザインから一貫してお願いすることは可能でしょうか</p>
                         </dt>
                         <dd class="faq-answer js-faqA open">
-                            <p class="faq-answer_txt">ユアコーディングはコーディングに特化したサービスですので、デザインからお受けすることは基本的にありません。<br>
+                            <p class="faq-answer_txt">ユアコーディングはコーディングに特化したサービスですので、デザインからお受けすることは基本的にありません。
                                 ただデザインを行う際は提携しているデザイナーと連携して対応させていただきますので、別途ご連絡ください。</p>
                         </dd>
                     </div>
